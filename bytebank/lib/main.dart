@@ -7,7 +7,7 @@ class BytebankApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: FormularioTransferencia(),
+        body: ListaTransferencias(),
       ),
     );
   }
@@ -58,6 +58,7 @@ class FormularioTransferencia extends StatelessWidget {
           content: Text('$transferenciaCriada'),
         ),
       );
+      Navigator.pop(context, transferenciaCriada);
     }
   }
 }
@@ -108,7 +109,15 @@ class ListaTransferencias extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          final Future future = Navigator.push(context, MaterialPageRoute(builder: (context){
+            return FormularioTransferencia();
+          }));
+          future.then((transferenciaRecebida){
+            debugPrint('Chegou no Then do future');
+            debugPrint('$transferenciaRecebida');
+          });
+        },
         child: Icon(Icons.add),
       ),
     );
