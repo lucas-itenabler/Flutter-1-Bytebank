@@ -15,7 +15,7 @@ class BytebankApp extends StatelessWidget {
           textTheme: ButtonTextTheme.primary,
         ),
       ),
-      home: ListaTransferencias(),
+      home: ListaTransferencias(), 
     );
   }
 }
